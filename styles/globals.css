@@ -1,0 +1,176 @@
+@font-face {
+  font-family: "mina-regular";
+  src: url("/fonts/Mina/Mina-Regular.woff") format("woff"),
+    url("/fonts/Mina/Mina-Regular.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "mina-bold";
+  src: url("/fonts/Mina/Mina-Bold.woff") format("woff"),
+    url("/fonts/Mina/Mina-Bold.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "mina-regular";
+  background-color: whitesmoke;
+}
+
+main {
+  padding: 20px;
+  margin: 50px 0;
+}
+
+*::-webkit-scrollbar {
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #f2f2f2;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #a8a8a8;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
+}
+
+body::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+
+.navbar {
+  padding: 16px 25px 12px;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  font-size: clamp(16px, 2vw, 20px);
+  border-bottom: 1px solid #cfdceb;
+  transition: all 0.2s ease-in-out;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.navbar li:last-child {
+  margin-left: auto;
+}
+.navbar li button {
+  padding: 5px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: "mina-regular";
+}
+
+.navbar a {
+  margin-top: 2px;
+  text-decoration: none;
+  color: black;
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+.align-items-center {
+  align-items: center;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-space-between {
+  justify-content: space-between;
+}
+.product-detail-container {
+  margin-top: 100px;
+}
+.product-detail-row {
+  display: flex;
+  transition: all ease 1s;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 3%;
+}
+.product-detail-col {
+  flex: 1 1 calc(100% - 456px);
+}
+
+.image-wrapper-stick {
+  position: sticky;
+  top: 100px;
+}
+.product-detail-image-container {
+  position: relative;
+}
+
+.accordion-section {
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: #e0e0e0;
+}
+
+.accordion-icon {
+  position: absolute;
+  top: 30%;
+  right: 10px;
+}
+
+.accordion-content {
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  transition: linear s ease;
+  overflow: hidden;
+}
+.accordion-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

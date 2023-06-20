@@ -1,0 +1,16 @@
+.productList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.productItem {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 12px;
+}
+.productItemLink {
+  margin: auto;
+  text-decoration: none;
+  color: inherit;
+}
