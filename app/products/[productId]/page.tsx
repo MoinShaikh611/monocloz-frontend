@@ -1,4 +1,5 @@
 import AccordionSection from "@/components/AccordionSection/AccordionSection";
+import { AddToCartButton } from "@/components/AddToCartButton/AddToCartButton";
 import { getProductDetail } from "lib/products";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -60,6 +61,9 @@ export default async function Page({ params }: any) {
                   accordionData={accordion.productInformation}
                 />
               )}
+            </div>
+            <div>
+              <AddToCartButton product={product}></AddToCartButton>
             </div>
           </div>
         </div>

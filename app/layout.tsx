@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar/Navbar";
 import "../styles/globals.css";
+import { AuthProvider } from "contexts/authContext";
+import { CartProvider } from "contexts/CartContext";
 
 export const metadata = {
   title: "Create Next App",
@@ -12,11 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <main>{children}</main>
-      </body>
-    </html>
+    <CartProvider>
+      <AuthProvider>
+        <html lang="en">
+          <body>
+            <Navbar />
+            <main>{children}</main>
+          </body>
+        </html>
+      </AuthProvider>
+    </CartProvider>
   );
 }

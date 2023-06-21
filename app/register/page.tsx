@@ -4,13 +4,13 @@ import { registerUser } from "../api/auth";
 import styles from "@/styles/login.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import useAuthStore from "app/store/authStore";
+import { useAuth } from "contexts/authContext";
 
 const Register = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
 
-  const { loggedIn } = useAuthStore();
+  const { loggedIn } = useAuth();
   useEffect(() => {
     try {
       if (loggedIn) {

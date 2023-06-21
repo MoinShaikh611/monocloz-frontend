@@ -1,5 +1,6 @@
 "use client";
-import useAuthStore from "app/store/authStore";
+import { useCart } from "contexts/CartContext";
+import { useAuth } from "contexts/authContext";
 import SuppressHydrationWarning from "helper/SuppressHydrationWarning";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -25,7 +26,8 @@ const Navbar: React.FC = () => {
   }, []);
 
   const router = useRouter();
-  const { loggedIn, logout } = useAuthStore();
+  const { loggedIn, logout } = useAuth();
+  const { cart } = useCart();
 
   const handleLogout = () => {
     logout(); // Call the logout action from the store
@@ -40,6 +42,11 @@ const Navbar: React.FC = () => {
         </li>
         <li>
           <Link href="/products">Products</Link>
+        </li>
+        <li>
+          <Link href="/cart" className="add-to-cart-btn">
+            <button>Items in Bag ({cart.length})</button>
+          </Link>
         </li>
         <SuppressHydrationWarning>
           {loggedIn ? (

@@ -53,6 +53,10 @@ body::-webkit-scrollbar {
   width: 0;
 }
 
+.w-100 {
+  width: 100%;
+}
+
 .navbar {
   padding: 16px 25px 12px;
   background-color: whitesmoke;
@@ -76,10 +80,11 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
-.navbar li:last-child {
+.navbar li:nth-last-child(2) {
   margin-left: auto;
 }
-.navbar li button {
+.navbar li button,
+.add-to-cart-btn {
   padding: 5px 20px;
   background-color: #000;
   color: #fff;
