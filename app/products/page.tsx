@@ -15,6 +15,7 @@ interface Product {
 }
 const ProductList = async () => {
   const products = await getAllProducts();
+
   return (
     <>
       <div className={styles.productList}>

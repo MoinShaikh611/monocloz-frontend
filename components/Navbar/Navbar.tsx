@@ -43,11 +43,19 @@ const Navbar: React.FC = () => {
         <li>
           <Link href="/products">Products</Link>
         </li>
-        <li>
-          <Link href="/cart" className="add-to-cart-btn">
-            <button>Items in Bag ({cart.length})</button>
-          </Link>
-        </li>
+        {cart.length !== 0 ? (
+          <li>
+            <Link href="/cart">
+              <button className="add-to-cart-btn">
+                {cart.length}&nbsp;
+                {cart.length === 1 ? "Item in Bag" : "Items in Bag"}
+              </button>
+            </Link>
+          </li>
+        ) : (
+          <li></li>
+        )}
+
         <SuppressHydrationWarning>
           {loggedIn ? (
             <li>

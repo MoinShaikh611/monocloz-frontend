@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import styles from "@/styles/login.module.css";
 import Link from "next/link";
 import { useAuth } from "contexts/authContext";
+import Loader from "@/components/Loader";
 const Login = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -59,7 +60,7 @@ const Login = () => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader></Loader>;
   }
 
   if (!isLoading) {

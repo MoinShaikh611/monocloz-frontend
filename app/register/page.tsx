@@ -5,6 +5,7 @@ import styles from "@/styles/login.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "contexts/authContext";
+import Loader from "@/components/Loader";
 
 const Register = () => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const Register = () => {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader></Loader>;
   }
 
   if (!isLoading) {
