@@ -26,6 +26,8 @@ const Register = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -33,12 +35,12 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      if (!username || !password) {
-        setError("Please enter a username and password");
+      if (!mobile || !password || !username) {
+        setError("Please enter a mobile or password or username");
         return;
       }
 
-      const userData = { username, password };
+      const userData = { username, password, mobile };
       const response = await registerUser(userData);
       console.log(response); // Handle success, e.g., redirect to login page
 
@@ -46,6 +48,7 @@ const Register = () => {
         setSuccess("Registration successful. Please login.");
         setUsername("");
         setPassword("");
+        setMobile("");
         setError("");
         setTimeout(() => {
           router.push("/login");
@@ -73,6 +76,14 @@ const Register = () => {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className={styles.formGroup}>
+            <label>Mobile Number:</label>
+            <input
+              type="text"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
             />
           </div>
           <div className={styles.formGroup}>

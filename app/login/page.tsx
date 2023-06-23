@@ -25,20 +25,20 @@ const Login = () => {
     }
   }, []);
 
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      if (!username || !password) {
-        setError("Please enter a username and password");
+      if (!password || !mobile) {
+        setError("Please enter a mobile and password");
         return;
       }
 
-      const userData = { username, password };
+      const userData = { password, mobile };
       const response = await loginUser(userData);
       console.log(response);
 
@@ -52,7 +52,7 @@ const Login = () => {
         // Redirect to the previous page
         router.replace("/");
       } else {
-        setError("Invalid username or password");
+        setError("Invalid username or mobile");
       }
     } catch (error: any) {
       setError(error.message);
@@ -69,12 +69,12 @@ const Login = () => {
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="mobile">Mobile:</label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="mobile"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
             />
           </div>
           <div className={styles.formGroup}>

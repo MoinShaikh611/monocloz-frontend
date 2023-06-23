@@ -3,6 +3,7 @@ const API_URL = "http://localhost:5001";
 // Register user
 export const registerUser = async (userData: {
   username: string;
+  mobile: string;
   password: string;
 }): Promise<any> => {
   try {
@@ -20,8 +21,8 @@ export const registerUser = async (userData: {
 
 // Login user
 export const loginUser = async (userData: {
-  username: string;
   password: string;
+  mobile: string;
 }): Promise<any> => {
   try {
     const response = await fetch(`${API_URL}/auth/login`, {
