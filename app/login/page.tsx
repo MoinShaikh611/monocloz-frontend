@@ -6,6 +6,7 @@ import styles from "@/styles/login.module.css";
 import Link from "next/link";
 import { useAuth } from "contexts/authContext";
 import Loader from "@/components/Loader";
+import { setToken } from "helper/auth";
 const Login = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -46,7 +47,7 @@ const Login = () => {
         const { token } = response;
 
         // Save the token in local storage
-        localStorage.setItem("token", token);
+        setToken(token);
         login();
 
         // Redirect to the previous page

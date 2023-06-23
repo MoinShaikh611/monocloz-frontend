@@ -1,5 +1,6 @@
 // contexts/AuthContext.tsx
 "use client";
+import { removeToken } from "helper/auth";
 import {
   createContext,
   useState,
@@ -46,7 +47,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = () => {
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("loggedIn", "false");
-      localStorage.removeItem("token");
+      removeToken();
     }
     setLoggedIn(false);
   };
