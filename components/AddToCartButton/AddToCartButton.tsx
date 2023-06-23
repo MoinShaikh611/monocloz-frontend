@@ -2,14 +2,11 @@
 import { useRouter } from "next/navigation";
 import { useCart } from "contexts/CartContext";
 import { useState } from "react";
-import { useAuth } from "contexts/authContext";
-import { addToCartAfterLogin } from "lib/cart";
 
 export const AddToCartButton: React.FC<{ product: any }> = ({ product }) => {
   const { addToCart } = useCart();
   const router = useRouter();
   const [addedToCart, setAddedToCart] = useState(false);
-  const { loggedIn } = useAuth();
   const handleAddToCart = async () => {
     const cartItem: any = {
       productId: product._id,
@@ -20,10 +17,6 @@ export const AddToCartButton: React.FC<{ product: any }> = ({ product }) => {
 
     addToCart(cartItem);
     setAddedToCart(true);
-
-    if (loggedIn) {
-      addToCartAfterLogin(cartItem.productId, cartItem.quantity);
-    }
   };
 
   const handleGoToBag = () => {
