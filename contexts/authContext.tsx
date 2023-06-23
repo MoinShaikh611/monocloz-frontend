@@ -46,6 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const logout = () => {
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("loggedIn", "false");
+      localStorage.removeItem("token");
     }
     setLoggedIn(false);
   };

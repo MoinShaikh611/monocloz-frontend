@@ -42,11 +42,14 @@ const Register = () => {
       const response = await registerUser(userData);
       console.log(response); // Handle success, e.g., redirect to login page
 
-      if (response.message === "Registration successful") {
+      if (response.message === "User registered successfully") {
         setSuccess("Registration successful. Please login.");
         setUsername("");
         setPassword("");
         setError("");
+        setTimeout(() => {
+          router.push("/login");
+        }, 3000);
       } else {
         setError("Registration failed. Please try again.");
       }
