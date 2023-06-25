@@ -3,33 +3,13 @@ import React, { Suspense, useEffect, useState } from "react";
 import { useCart } from "contexts/CartContext";
 import styles from "@/styles/cart.module.css";
 import Loader from "@/components/Loader";
-import { getToken, removeToken } from "helper/auth";
-import decodeJwtToken from "helper/decodeJwtToken";
-import { useAuth } from "contexts/authContext";
+import Link from "next/link";
+import checkTokenExpiration from "helper/checkTokenExpiration";
+
 const Cart: React.FC = () => {
   const { cart, addToCart, decreaseQuantity, removeFromCart, clearCart } =
     useCart();
-  const { logout } = useAuth();
-
-  const token = getToken();
-
-  if (token) {
-    try {
-      const decodedToken = decodeJwtToken(token);
-
-      const currentTime = Math.floor(Date.now() / 1000); // Get current time in seconds
-
-      if (decodedToken.exp && currentTime >= decodedToken.exp) {
-        // Token has expired, redirect to the login page
-        window.location.href = "/login";
-        removeToken();
-        logout();
-      }
-    } catch (error) {
-      console.error("Token decoding failed:", error);
-      // Handle token decoding error if necessary
-    }
-  }
+  checkTokenExpiration();
 
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +24,10 @@ const Cart: React.FC = () => {
     <div className={styles.container}>
       <h1>Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <>
+          <p>Your cart is empty.</p>
+          <Link href={"/products"}>Explore Fantastic Products</Link>
+        </>
       ) : (
         <>
           <ul>
